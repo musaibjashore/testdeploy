@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-9@r3arrrl3n-fppt^l-7e+huk!x2er%((r%57w-%j9&+&_w+1k
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['https://testdeploy-dtia.onrender.com','0.0.0.0:10000']
+ALLOWED_HOSTS = ['testdeploy-dtia.onrender.com','0.0.0.0:10000']
 
 
 # Application definition
@@ -132,6 +132,7 @@ LOGOUT_REDIRECT_URL = 'home'
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = BASE_DIR/"media"
+
 
 
 

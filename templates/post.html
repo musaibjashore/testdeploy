@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    <div class="post-entry">
+        <h2>{{object.title}}</h2>
+        <p>{{object.body}}</p>
+        {% if object.img != NULL %}
+            <img src="{{ object.img.url }}">
+        {% endif %}
+        <p>{{object.time}}</p>
+
+        <p>Written by - {{object.author}}</p>
+    </div>
+    <div>
+        <p>Comments:</p>
+        {% for co in object.comments.all %}
+        <p>
+            {{co.author}}:
+            {{co.comment}} &middot;
+            {{co.time}}
+        </p>
+        {% endfor %}  
+    </div>
+    {% if user.is_authenticated %}
+    {% if user == object.author %}
+    <p><a href="{% url 'post_edit' object.pk %}">Edit post</a></p>
+    <p><a href="{% url 'post_delete' object.pk %}">Delete post</a></p>
+    {% endif %}
+    <p><a href="{% url 'comment' object.pk %}">Comment</a></p>
+    {% endif %}
+{% endblock content%}

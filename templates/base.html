@@ -1,0 +1,34 @@
+<!doctype html>
+{% load static %}
+<html>
+	<head>
+		<title>yammete kudasai</title>
+		<link href="{% static 'css/base.css' %}" rel="stylesheet">
+	</head>
+	<body>
+		<div>
+			<header>
+				<div class="nav-left">
+					<h1> <a href="{% url 'home' %}">Yamete Kudasai</a> </h1>
+				</div>
+				<div class="nav-right">
+					<a href="{% url 'post_new'%}">+ New Post</a>
+				</div>
+			</header>
+			{% if user.is_authenticated %}
+				<h4>{{user}}</h4>
+				<form action="{% url 'logout' %}" method="post">
+					{% csrf_token %}
+					<button type="submit">Logout</button>
+				</form>
+			{% else%}
+				<p>you are not logged in</p>
+				<a href="{% url 'login' %}">Log in</a>
+				<p><a href="{% url 'signup' %}">sign up</a></p>
+			{% endif %}
+
+		{% block content %}
+		{% endblock %}
+		</div>
+	</body>
+</html>

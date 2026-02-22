@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-9@r3arrrl3n-fppt^l-7e+huk!x2er%((r%57w-%j9&+&_w+1k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['testdeploy-1-ou4h.onrender.com']
 
 
 # Application definition
@@ -132,4 +132,5 @@ LOGOUT_REDIRECT_URL = 'home'
 
 
 MEDIA_URL = "/media/"
+
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")

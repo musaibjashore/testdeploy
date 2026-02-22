@@ -27,8 +27,7 @@ SECRET_KEY = 'django-insecure-9@r3arrrl3n-fppt^l-7e+huk!x2er%((r%57w-%j9&+&_w+1k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
-ALLOWED_HOSTS = ['testdeploy-dtia.onrender.com','0.0.0.0:10000','testdeploy-1-ou4h.onrender.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -42,11 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogapp.apps.BlogappConfig',
     'ac.apps.AcConfig',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -122,19 +123,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
+STATITFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 
 MEDIA_URL = "/media/"
-
-MEDIA_ROOT = BASE_DIR/"media"
-
-
-
-
-
-
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")

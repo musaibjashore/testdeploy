@@ -4,7 +4,7 @@
     <div class="post-entry">
         <h2>{{object.title}}</h2>
         <p>{{object.body}}</p>
-        {% if object.img  %}
+        {% if object.img != NULL %}
             <img src="{{ object.img.url }}">
         {% endif %}
         <p>{{object.time}}</p>
@@ -28,5 +28,4 @@
     {% endif %}
     <p><a href="{% url 'comment' object.pk %}">Comment</a></p>
     {% endif %}
-
 {% endblock content%}

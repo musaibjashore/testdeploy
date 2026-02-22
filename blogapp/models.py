@@ -14,7 +14,7 @@ class Post(models.Model):
         )
     body = models.TextField()
     time = models.DateTimeField(auto_now_add=True)
-    img = models.ImageField(default=None,blank=True,null=True,upload_to='img_file')
+    img = models.ImageField(default=None,blank=True,null=True,upload_to='img_file/')
     class Meta:
         ordering = ['-time']
 

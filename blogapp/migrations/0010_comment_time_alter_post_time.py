@@ -13,11 +13,17 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='comment',
             name='time',
-            field=models.DateTimeField(auto_now=True),
-        ),
-        migrations.AlterField(
-            model_name='post',
-            name='time',
             field=models.DateTimeField(auto_now_add=True),
         ),
+        migrations.RunSQL(
+        sql='ALTER TABLE blogapp_post ALTER COLUMN "time" TYPE timestamptz USING (CURRENT_DATE + "time") AT TIME ZONE \'UTC\';',
+        reverse_sql='ALTER TABLE blogapp_post ALTER COLUMN "time" TYPE time WITHOUT TIME ZONE USING "time"::time;',
+        state_operations=[
+            migrations.AlterField(
+                model_name='post',
+                name='time',
+                field=models.DateTimeField(),
+            ),
+        ],
+    ),
     ]
